@@ -1,0 +1,42 @@
+l'untente sceglie delle auto (modello 3d, lista)
+le decora
+- colore
+- immagini (stickers, sponsor)
+
+interazioni utente
+- rotazione del modelo, tramite trascnamento del mouse 
+- zoom con rotellina
+- scelta dei colori tramite color picker
+- il colore si applica a zona del modello (es: porta, aletonne, cofano, ...)
+
+
+modalità show
+- rotazione automatica
+- luci
+- sfondo
+
+output
+- immagine
+- file 3D formato obj, glb o gltf
+- salvare il progetto nel sito (magari se non esco senza salvare)
+
+opzionale
+- vedere le ruote che girano
+- versione mobile con gesti touch, es zoom con le dita
+- scelta dei materiali (texture)
+- scelta dei materiali (bump mapping o normal maps)
+- acquisto del prodotto
+
+
+
+Siti importanti per il progetto:
+
+- blender 3D
+- bump maps, normal maps and displacement maps
+- portableapps (per portarsi i propri browser o app, senza avere tutti quei file nel SSD)
+- babylon.js
+
+
+tipo di progetto simile:
+- https://xboxdesignlab.xbox.com/fr-ch/configure/xbox-elite-wireless-controller-series-2
+
