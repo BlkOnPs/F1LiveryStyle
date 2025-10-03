@@ -1,0 +1,36 @@
+DEFINIZIONE CLASSI
+
+https://uiverse.io/pharmacist-sabot/smart-moth-59
+
+caricaModello()
+
+cambioBackgorund()
+
+cambioColore()
+
+cambioTexture()
+
+cambioTipoDiGomma()
+
+cambioMateriale()
+
+inserisciImmagine(String photo, int zona)
+
+impostaAnimazione(int index)
+
+cambiaAngolazione(int index)
+
+impostaRotazioneAutomatica()
+
+scaricaModello()
+
+--------------------------------------------
+
+gestionePlatform()
+
+salvaProgetto() --> nel browser, se esce, ecc
+
+
+
+
+
