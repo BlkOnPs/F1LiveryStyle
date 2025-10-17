@@ -120,10 +120,8 @@ body.night {
     color: #f1f1f1;
 }
 
-body.night .intro {
-    background: linear-gradient(145deg, #222, #444);
-    color: #f1f1f1;
-    background-color: white;
+body.night .intro p{
+    color: #000000;
 }
 
 body.night .radioButton input[type="radio"] {
