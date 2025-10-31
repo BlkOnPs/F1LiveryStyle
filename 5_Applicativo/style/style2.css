@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.indietro {
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    transition: all 0.3s;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 2px solid;
+    padding: 10px;
+    text-align: center;
+}
+
+.indietro:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.divSinistra, .divDestra {
+    width: 20%;
+    height: 100%;
+    border: 2px solid;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.canvasCentrale {
+    flex-grow: 1;
+    border: 2px solid;
+    height: 100%;
+    margin: 0 20px;
+}

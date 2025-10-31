@@ -25,7 +25,6 @@ opzionale
 - versione mobile con gesti touch, es zoom con le dita
 - scelta dei materiali (texture)
 - scelta dei materiali (bump mapping o normal maps)
-- acquisto del prodotto
 
 
 
@@ -40,3 +39,4 @@ Siti importanti per il progetto:
 tipo di progetto simile:
 - https://xboxdesignlab.xbox.com/fr-ch/configure/xbox-elite-wireless-controller-series-2
 
+WEBSTORM

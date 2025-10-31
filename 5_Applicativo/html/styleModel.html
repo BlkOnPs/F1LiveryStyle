@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- data creazione: 31.10.2025 data ultima modifica: gg.mm.aaaa -->
+    <!-- O.S. = Windows -->
+    <!-- index.html -->
+    <title>Personalizza la tua vettura!</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Personalizzazione della vettura F1">
+    <meta name="author" content="Amel Cehic">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="icon" href="../images/f1.png">
+    <link rel="stylesheet" href="../style/style2.css">
+</head>
+
+<body>
+    <button class="indietro" style="visibility: visible;">Torna indietro..</button><br><br><br>
+    <div class="divSinistra">
+        prova1
+    </div><br>
+
+    <canvas class="modelloDaPersonalizzare"><p>questo canvas</p></canvas>
+    
+    <div class="divDestra">
+        prova2
+    </div>
+</body>
+<script src="https://cdn.babylonjs.com/babylon.js"></script>
+<script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+<script>
+    const modello = localStorage.getItem("modelloSelezionato");
+    if (modello) {
+        console.log("Modello scelto:", modello);
+    }
+</script>
+
+</html>
