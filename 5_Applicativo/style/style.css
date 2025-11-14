@@ -126,16 +126,16 @@ body {
     background: #6dc6e9;
 }
 
-body.night {
+body.serale {
     background: linear-gradient(145deg, #3a506b, #1c2541);
     color: #f1f1f1;
 }
 
-body.night .intro p {
+body.serale .intro p {
     color: #000000;
 }
 
-body.night .radioButton input[type="radio"] {
+body.serale .radioButton input[type="radio"] {
     box-shadow:
         0 0 0 0.15em #aaa,
         0 0 0 0.3em #222,

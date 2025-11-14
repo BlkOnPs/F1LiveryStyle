@@ -1,49 +1,200 @@
-body {
+* {
     margin: 0;
-    height: 100vh;
-    font-family: sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenuto {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: calc(100vh - 40px);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.indietro {
-    color: #090909;
-    padding: 0.7em 1.7em;
-    font-size: 18px;
-    border-radius: 0.5em;
-    background: #e8e8e8;
-    cursor: pointer;
-    border: 1px solid #e8e8e8;
-    transition: all 0.3s;
-    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    border: 2px solid;
-    padding: 10px;
-    text-align: center;
-}
-
-.indietro:active {
-    color: #666;
-    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
-}
-
-.divSinistra, .divDestra {
-    width: 20%;
-    height: 100%;
-    border: 2px solid;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
 }
 
-.canvasCentrale {
-    flex-grow: 1;
-    border: 2px solid;
+.buttonIndietro {
+    width: 200px;
+    padding: 12px 20px;
+    color: white;
+    background: blue;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.buttonIndietro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contenutoPrincipale {
+    display: flex;
+    gap: 20px;
+    flex: 1 1 auto;
+}
+
+.sinistraDiv,
+.destraDiv {
+    background: white;
+    border-radius: 15px;
+    border-right: 3px solid #667eea;
+    padding: 25px;
+    width: 380px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+.sinistraDiv h1,
+.destraDiv h1 {
+    color: #667eea;
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.sezione {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 5px solid #667eea;
+    border-top: 5px solid #667eea;
+}
+
+.sezione h3 {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.campo input[type="number"],
+.campo input[type="text"],
+.campo select{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.3s;
+}
+
+.campo input[type="number"]:focus,
+.campo input[type="text"]:focus,
+.campo select:focus {
+    outline: none;
+    border-color: #002fff;
+}
+
+.campo input[type="range"] {
+    padding: 0;
+}
+
+.campo input[type="color"] {
+    width: 100%;
+    height: 45px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.campo input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.immaginiGomme{
+    text-align: center;
+}
+
+.logoGomma{
+    width: 50px;
+    transition: all 0.2s ease-in-out;
+}
+
+.logoGomma:hover {
+    transform: translateY(-8px);
+}
+
+.centro {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contenitoreCanvas {
+    flex: 1 1 auto;
+    background: white;
+    border-radius: 15px;
+    border-style: solid;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#canvasOggetto {
+    width: 100%;
     height: 100%;
-    margin: 0 20px;
+}
+
+.download {
+    padding: 15px 40px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    align-self: center;
+}
+
+.download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.filePick{
+    background-color: white;
+    border-radius: 30px;
+    padding: 50px 0 50px 5px;
+    color: #002fff;
+    font-weight: bold;
+    border-right: 3px solid #667eea;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

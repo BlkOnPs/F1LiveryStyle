@@ -16,24 +16,100 @@
 </head>
 
 <body>
-    <button class="indietro" style="visibility: visible;">Torna indietro..</button><br><br><br>
-    <div class="divSinistra">
-        prova1
-    </div><br>
+    <div class="contenuto">
+        <button class="buttonIndietro" onclick="tornaIndietro()">
+            Torna alla pagina principale
+        </button>
 
-    <canvas class="modelloDaPersonalizzare"><p>questo canvas</p></canvas>
-    
-    <div class="divDestra">
-        prova2
+        <div class="contenutoPrincipale">
+            <div class="sinistraDiv">
+                <h1>Modifiche Vettura</h1><br>
+                <!---Nome e Numero Pilota-->
+                <div class="sezione">
+                    <h3>Chi guiderà la vettura?</h3>
+                    <div class="campo">
+                        <label>Numero Pilota:</label>
+                        <input type="number" min="1" max="99" value="44" id="numeroPilota">
+                    </div>
+                    <div class="campo">
+                        <label>Nome Pilota:</label>
+                        <input type="text" placeholder="Inserisci il tuo nome" id="nomePilota">
+                    </div>
+                </div>
+
+                <!---Selezione Gomma da impostare-->
+                <div class="sezione">
+                    <h3>Scelta Gomma</h3>
+                    <div class="campo">
+                        <label>Tipo di gomma:</label><br>
+                        <div class="immaginiGomme">
+                            <img src="../images/Type_of_Tires/soft.png" class="logoGomma" onclick="console.log('prova')">
+                            <img src="../images/Type_of_Tires/medium.png" class="logoGomma" onclick="selezionaGomma()">
+                            <img src="../images/Type_of_Tires/hard.png" class="logoGomma" onclick="selezionaGomma()">
+                            <img src="../images/Type_of_Tires/intermediate.png" class="logoGomma" onclick="selezionaGomma()">
+                        </div>
+                    </div>
+                </div>
+
+                <!---Colore Base Vettura-->
+                <div class="sezione">
+                    <h3>Colore della Vettura</h3>
+                    <div class="campo">
+                        <label>Colore di base:</label>
+                        <input type="color" name="colorPickerVettura" onchange="modificaColore()">
+                    </div>
+                </div>
+
+                <div class="sezione">
+                    <h3>Modifica zona a scelta</h3>
+                    <div class="campo">
+                        <label>Zona della vettura</label>
+                        <select name="selectZonaVettura">
+                            <option value="all">Tutte le zone</option>
+                            <option value="1">alettone</option>
+                            <option value="2">halo</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="centro">
+                <div id="contenitoreCanvas">
+                    <canvas id="canvasOggetto"></canvas>
+                </div>
+                <button class="download" onclick="downloadModello()">
+                    Scarica Modello
+                </button>
+            </div>
+
+            <div class="destraDiv">
+                <h1>Materiali, Animazioni e Background</h1>
+                <div class="sezione">
+                    <h3>Inserimento immagine</h3>
+                    <div class="campo">
+                        <input type="file" class="filePick">
+                    </div>
+                </div>
+
+                <div class="sezione">
+                    <h3>Background</h3>
+                    <div class="campo">
+                        <label>Colore Background</label>
+                        <input type="color" value="#000000" id="backgroundColorPicker">
+                        <br><h4>oppure</h4><br>
+                        <label>Immagini Background</label>
+                        <!--sezione immagini preimpostate-->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="https://cdn.babylonjs.com/babylon.js"></script>
 <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
-<script>
-    const modello = localStorage.getItem("modelloSelezionato");
-    if (modello) {
-        console.log("Modello scelto:", modello);
-    }
-</script>
+<script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+<script src="../script/script2.js"></script>
+<script src="../script/personalizzazioni.js"></script>
 
 </html>
