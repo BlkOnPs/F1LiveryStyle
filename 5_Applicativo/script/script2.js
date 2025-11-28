@@ -1,6 +1,9 @@
 const canvasOggetto = document.getElementById("canvasOggetto");
 const engine = new BABYLON.Engine(canvasOggetto, true);
 const modello = localStorage.getItem("modelloSelezionato");
+const numeroPilota = document.getElementById("numeroPilota");
+const nomePilota = document.getElementById("nomePilota");
+
 let scena;
 let camera;
 let currentModel = null;
@@ -55,10 +58,13 @@ function impostaCamera(nomeFile) {
     case "2026":
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
-      camera.radius = 6500;
-      camera.setTarget(new BABYLON.Vector3(-2015, 550, 520));
-      camera.lowerRadiusLimit = 70;
-      camera.upperRadiusLimit = 6500;
+      camera.radius = 1000;
+      camera.setTarget(new BABYLON.Vector3(0,0,0));
+      camera.wheelDeltaPercentage = 0.05;
+      //camera.radius = 6500;
+      //camera.setTarget(new BABYLON.Vector3(-2015, 550, 520));
+      camera.lowerRadiusLimit = 0;
+      camera.upperRadiusLimit = 2000;
       console.log("camera modello 2026");
       break;
 
@@ -98,6 +104,7 @@ function caricaModello3D(nomeFile) {
     scena,
     function (meshes) {
       currentModel = meshes;
+
       const dimensione = meshes[0].getHierarchyBoundingVectors();
       const centro = BABYLON.Vector3.Center(dimensione.min, dimensione.max);
       meshes.forEach(mesh => {
@@ -109,6 +116,7 @@ function caricaModello3D(nomeFile) {
       camera.radius = dimensioneMax * 2;
 
       console.log("modello: ", nomeFile);
+      inizializzaNumeroPilota(scena);
     },
     null,
     function (scena, message) {
@@ -122,11 +130,55 @@ function tornaIndietro() {
   window.location.href = "index.html";
 }
 
-function downloadModello() {
-  BABYLON.GLTF2Export.GLBAsync(scena, "scena").then((glb) => {
-    glb.downloadFiles();
-});
+async function downloadModello() {
+  const numero = numeroPilota.value.trim();
+  const nome = nomePilota.value.trim();
+
+  if (numero === "" || nome === "") {
+    alert("Completare il nome e il numero di gara del pilota per poter scaricare il modello!");
+    return;
+  }
+
+  const nomeFile = nome + "_" + numero + "_Model" + modello;
+
+  try {
+    const glb = await BABYLON.GLTF2Export.GLBAsync(scena, nomeFile);
+    const glbBlob = glb.glTFFiles[nomeFile + ".glb"];
+
+    const posterBlob = await creaPoster();
+
+    const zip = new JSZip();
+    zip.file(nomeFile + ".glb", glbBlob);
+    zip.file(nomeFile + "_poster.png", posterBlob);
+
+    const zipBlob = await zip.generateAsync({ type: "blob" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(zipBlob);
+    link.download = nomeFile + ".zip";
+    link.click();
+    URL.revokeObjectURL(link.href);
+    
+  } catch (error) {
+    console.error("Errore:", error);
+    alert("Errore durante la creazione del pacchetto.");
+  }
 }
+
+function creaPoster() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      BABYLON.Tools.CreateScreenshotUsingRenderTarget(
+        engine,
+        camera,
+        { width: 3840, height: 2160 },
+        (dataUrl) => {
+          fetch(dataUrl).then(res => res.blob()).then(resolve);
+        }
+      );
+    }, 100);
+  });
+}
+
 
 engine.runRenderLoop(function () {
   scena.render();

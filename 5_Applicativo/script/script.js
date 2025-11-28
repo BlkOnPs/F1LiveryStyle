@@ -13,13 +13,13 @@ function creaScena() {
     "camera",
     -Math.PI / 4,
     Math.PI / 2.5,
-    7000,
+    4000,
     new BABYLON.Vector3(0, 0, 0), //target
     scena
   );
   camera.attachControl(canvasOggetto, false);
   camera.lowerRadiusLimit = 50;
-  camera.upperRadiusLimit = 7000;
+  camera.upperRadiusLimit = 4000;
 
   //ROTAZIONE AUTOMATICA LENTA (+= 0.009)
   scena.registerBeforeRender(function () {
@@ -32,7 +32,7 @@ function creaScena() {
     new BABYLON.Vector3(0, 1, 0), //direzione
     scena
   );
-  luce1.intensity = 0.8;
+  luce1.intensity = 1.5;
 
   //luce direzionale
   const luce2 = new BABYLON.DirectionalLight(
@@ -40,50 +40,50 @@ function creaScena() {
     new BABYLON.Vector3(-1, -2, -1),
     scena
   );
-  luce2.intensity = 0.5;
+  luce2.intensity = 1;
 
   return scena;
 }
 
 function impostaCamera(nomeFile) {
   switch (nomeFile) {
-    case "2022":
+    case "1991":
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
-      camera.radius = 7000;
-      camera.setTarget(new BABYLON.Vector3(-1200, 300, 800));
-      camera.lowerRadiusLimit = 50;
-      camera.upperRadiusLimit = 7000;
-      console.log("camera modello 2022");
+      camera.radius = 10;
+      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+      camera.lowerRadiusLimit = 10;
+      camera.upperRadiusLimit = 10;
+      console.log("camera modello 1991");
       break;
 
     case "2026":
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
-      camera.radius = 7000;
-      camera.setTarget(new BABYLON.Vector3(-1500, 250, 900));
-      camera.lowerRadiusLimit = 70;
-      camera.upperRadiusLimit = 7000;
+      camera.radius = 17;
+      camera.setTarget(new BABYLON.Vector3(0, -1, 0));
+      camera.lowerRadiusLimit = 0;
+      camera.upperRadiusLimit = 17;
       console.log("camera modello 2026");
       break;
 
-    case "mclaren":
+    case "Mclaren":
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
-      camera.radius = 7000;
+      camera.radius = 8;
       camera.setTarget(new BABYLON.Vector3(0, 0, 0));
-      camera.lowerRadiusLimit = 70;
-      camera.upperRadiusLimit = 7000;
+      camera.lowerRadiusLimit = 0;
+      camera.upperRadiusLimit = 8;
       console.log("camera modello mcLaren");
       break;
 
     default:
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
-      camera.radius = 7000;
-      camera.setTarget(new BABYLON.Vector3(-1500, 250, 900));
+      camera.radius = 1000;
+      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 50;
-      camera.upperRadiusLimit = 7000;
+      camera.upperRadiusLimit = 1000;
       console.log("camera default");
       break;
   }
@@ -96,7 +96,7 @@ function caricaModello3D(nomeFile) {
   }
   impostaCamera(nomeFile);
 
-  const percorsoModelli = "../models/modify/";
+  const percorsoModelli = "../models/views/";
   BABYLON.SceneLoader.ImportMesh(
     "", //nome meshes
     percorsoModelli, //path root

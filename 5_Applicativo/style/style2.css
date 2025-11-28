@@ -98,7 +98,7 @@ body {
 
 .campo input[type="number"],
 .campo input[type="text"],
-.campo select{
+.campo select {
     width: 100%;
     padding: 10px;
     border: 2px solid #e0e0e0;
@@ -132,17 +132,34 @@ body {
     cursor: pointer;
 }
 
-.immaginiGomme{
+.immaginiGomme {
     text-align: center;
 }
 
-.logoGomma{
-    width: 50px;
-    transition: all 0.2s ease-in-out;
+.logoGomma {
+    padding: 5px;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0 5px;
 }
 
 .logoGomma:hover {
+    border-color: #667eea;
     transform: translateY(-8px);
+}
+
+.logoGomma.active {
+    border-color: #002fff;
+}
+
+.logoGomma img {
+    width: 40px;
+    height: 40px;
+    display: block;
 }
 
 .centro {
@@ -189,7 +206,7 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.filePick{
+.filePick {
     background-color: white;
     border-radius: 30px;
     padding: 50px 0 50px 5px;
@@ -197,4 +214,78 @@ body {
     font-weight: bold;
     border-right: 3px solid #667eea;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.neomorfismoButton {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff;
+    color: #4d4d4d;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px 20px;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid rgb(206, 206, 206);
+}
+
+.neomorfismoButton:hover {
+    box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+}
+
+.neomorfismoButton:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+}
+
+/*BACKGROUND*/
+.grigliaSfondi {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.buttonSfondo {
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 3px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.buttonSfondo:hover {
+    border-color: #667eea;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.buttonSfondo.active {
+    border-color: #002fff;
+    border-width: 4px;
+    box-shadow: 0 0 12px rgba(0, 47, 255, 0.5);
+}
+
+.buttonSfondo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#buttonAnimazioni button {
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    background-color: #002fff;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#buttonAnimazioni button:hover {
+    transform: translateY(-2px);
 }

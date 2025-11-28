@@ -35,6 +35,7 @@
                         <label>Nome Pilota:</label>
                         <input type="text" placeholder="Inserisci il tuo nome" id="nomePilota">
                     </div>
+                    <button class="neomorfismoButton" onclick="impostaNumero()">Imposta</button>
                 </div>
 
                 <!---Selezione Gomma da impostare-->
@@ -43,10 +44,15 @@
                     <div class="campo">
                         <label>Tipo di gomma:</label><br>
                         <div class="immaginiGomme">
-                            <img src="../images/Type_of_Tires/soft.png" class="logoGomma" onclick="console.log('prova')">
-                            <img src="../images/Type_of_Tires/medium.png" class="logoGomma" onclick="selezionaGomma()">
-                            <img src="../images/Type_of_Tires/hard.png" class="logoGomma" onclick="selezionaGomma()">
-                            <img src="../images/Type_of_Tires/intermediate.png" class="logoGomma" onclick="selezionaGomma()">
+                            <button class="logoGomma" onclick="cambiaTipoGomma('soft')">
+                                <img src="../images/Type_of_Tires/soft.png" alt="soft">
+                            </button>
+                            <button class="logoGomma" onclick="cambiaTipoGomma('medium')">
+                                <img src="../images/Type_of_Tires/medium.png" alt="medium">
+                            </button>
+                            <button class="logoGomma" onclick="cambiaTipoGomma('hard')">
+                                <img src="../images/Type_of_Tires/hard.png" alt="hard">
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -56,7 +62,7 @@
                     <h3>Colore della Vettura</h3>
                     <div class="campo">
                         <label>Colore di base:</label>
-                        <input type="color" name="colorPickerVettura" onchange="modificaColore()">
+                        <input type="color" name="colorPickerVettura">
                     </div>
                 </div>
 
@@ -66,12 +72,22 @@
                         <label>Zona della vettura</label>
                         <select name="selectZonaVettura">
                             <option value="all">Tutte le zone</option>
-                            <option value="1">alettone</option>
-                            <option value="2">halo</option>
+                            <option value="1">Ala anteriore</option>
+                            <option value="2">Ala posteriore</option>
+                            <option value="3">Endplate anteriore</option>
+                            <option value="4">Endplate posteriore</option>
+                            <option value="5">Engine Cover</option>
+                            <option value="6">Halo</option>
+                            <option value="7">Nosecone</option>
+                            <option value="8">Gomma Tread</option>
                         </select>
                     </div>
+                    <div class="campo">
+                        <label>Opzioni Modifica</label>
+                        <input type="color"><br><br>
+                        <input type="file">
+                    </div>
                 </div>
-
             </div>
 
             <div class="centro">
@@ -85,6 +101,7 @@
 
             <div class="destraDiv">
                 <h1>Materiali, Animazioni e Background</h1>
+                
                 <div class="sezione">
                     <h3>Inserimento immagine</h3>
                     <div class="campo">
@@ -92,20 +109,75 @@
                     </div>
                 </div>
 
+                <!--Background colore e immagine-->
                 <div class="sezione">
                     <h3>Background</h3>
+
                     <div class="campo">
                         <label>Colore Background</label>
-                        <input type="color" value="#000000" id="backgroundColorPicker">
-                        <br><h4>oppure</h4><br>
+                        <input type="color" value="#000000" id="backgroundColorPicker" onchange="cambiaColoreSfondo()">
+                    </div>
+
+                    <div class="campo">
+                        <h4 style="text-align: center; margin: 15px 0;">oppure</h4>
+                    </div>
+
+                    <div class="campo">
                         <label>Immagini Background</label>
-                        <!--sezione immagini preimpostate-->
+                        <div class="grigliaSfondi">
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/1.jpg')">
+                                <img src="../images/backgrounds/1.jpg" alt="immagine 1">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/2.jpg')">
+                                <img src="../images/backgrounds/2.jpg" alt="immagine 2">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/3.jpg')">
+                                <img src="../images/backgrounds/3.jpg" alt="immagine 3">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/4.jpg')">
+                                <img src="../images/backgrounds/4.jpg" alt="immagine 4">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/5.jpg')">
+                                <img src="../images/backgrounds/5.jpg" alt="immagine 5">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/6.jpg')">
+                                <img src="../images/backgrounds/6.jpg" alt="immagine 6">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/7.jpg')">
+                                <img src="../images/backgrounds/7.jpg" alt="immagine 7">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/8.jpg')">
+                                <img src="../images/backgrounds/8.jpg" alt="immagine 8">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaSfondoImmagine('../images/backgrounds/9.jpg')">
+                                <img src="../images/backgrounds/9.jpg" alt="immagine 9">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Animazioni-->
+                <div class="sezione">
+                    <h3>Animazioni e Movimenti</h3>
+                    <div class="campo" id="buttonAnimazioni">
+                        <button onclick="eseguiRotazioneVettura()">Auto-rotazione/Ferma</button>
+                        <input type="range" min="0.001" max="0.1" step="0.001" value="0.009" onchange="velocitaRotazione()">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdn.babylonjs.com/babylon.js"></script>
 <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
 <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
