@@ -1,5 +1,5 @@
 const canvasOggetto = document.getElementById("canvasOggetto");
-const engine = new BABYLON.Engine(canvasOggetto, true); //true --> abilita anti-aliasing (per avere un immagine piu morbida)
+const engine = new BABYLON.Engine(canvasOggetto, true); //true --> abilita anti-aliasing (per avere un immagine piu "morbida")
 const confermaButton = document.querySelector(".conferma");
 let scena;
 let currentModel = null;
@@ -13,7 +13,7 @@ function creaScena() {
     "camera",
     -Math.PI / 4,
     Math.PI / 2.5,
-    4000,
+    5000,
     new BABYLON.Vector3(0, 0, 0), //target
     scena
   );
@@ -32,7 +32,7 @@ function creaScena() {
     new BABYLON.Vector3(0, 1, 0), //direzione
     scena
   );
-  luce1.intensity = 1.5;
+  luce1.intensity = 4;
 
   //luce direzionale
   const luce2 = new BABYLON.DirectionalLight(
@@ -40,7 +40,7 @@ function creaScena() {
     new BABYLON.Vector3(-1, -2, -1),
     scena
   );
-  luce2.intensity = 1;
+  luce2.intensity = 4;
 
   return scena;
 }
@@ -50,31 +50,41 @@ function impostaCamera(nomeFile) {
     case "1991":
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
-      camera.radius = 10;
+      camera.radius = 15;
       camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 10;
-      camera.upperRadiusLimit = 10;
+      camera.upperRadiusLimit = 15;
       console.log("camera modello 1991");
       break;
 
     case "2026":
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
-      camera.radius = 17;
-      camera.setTarget(new BABYLON.Vector3(0, -1, 0));
+      camera.radius = 20;
+      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 0;
-      camera.upperRadiusLimit = 17;
+      camera.upperRadiusLimit = 20;
       console.log("camera modello 2026");
       break;
 
     case "Mclaren":
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
-      camera.radius = 8;
+      camera.radius = 9;
       camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 0;
-      camera.upperRadiusLimit = 8;
+      camera.upperRadiusLimit = 9;
       console.log("camera modello mcLaren");
+      break;
+      
+    case "2024":
+      camera.alpha = -Math.PI / 4;
+      camera.beta = Math.PI / 2.5;
+      camera.radius = 10;
+      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+      camera.lowerRadiusLimit = 0;
+      camera.upperRadiusLimit = 10;
+      console.log("camera modello mercedes W11");
       break;
 
     default:
@@ -164,15 +174,38 @@ window.addEventListener("resize", () => {
   engine.resize();
 });
 
-//CAMBIO COLORE BACKGROUND IN BASE ALL'ORARIO LOCALE
-function cambioBackground() {
-  let data = new Date();
-  let ore = data.getHours();
-
-  if (ore >= 20 || ore < 6) {
-    document.body.classList.add("serale");
-  } else {
-    document.body.classList.remove("serale");
-  }
-}
-cambioBackground();
+new FinisherHeader({
+  "count": 10,
+  "size": {
+    "min": 974,
+    "max": 1261,
+    "pulse": 0
+  },
+  "speed": {
+    "x": {
+      "min": 0.1,
+      "max": 0.8
+    },
+    "y": {
+      "min": 0.1,
+      "max": 0.8
+    }
+  },
+  "colors": {
+    "background": "#001dff",
+    "particles": [
+      "#00ffdd",
+      "#284292",
+      "#23dbb6"
+    ]
+  },
+  "blending": "overlay",
+  "opacity": {
+    "center": 0.5,
+    "edge": 0.05
+  },
+  "skew": 0,
+  "shapes": [
+    "c"
+  ]
+});

@@ -3,11 +3,10 @@
 
 <head>
     <!-- data creazione: 03.10.2025 data ultima modifica: 31.10.2025 -->
-    <!-- O.S. = Windows -->
     <!-- index.html -->
     <title>Personalizza la tua vettura!</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Personalizzazione della vettura F1">
+    <meta name="description" content="Scelta di modello F1 da personalizzare">
     <meta name="author" content="Amel Cehic">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/f1.png">
@@ -15,34 +14,43 @@
 </head>
 
 <body>
-    <canvas id="canvasOggetto"></canvas>
-    <div class="intro">
-        <h1 style="font-family: font1;text-align: left;"><span
-                style="color:#0040ff;font-weight: bolder;font-size: 40px;">F1</span>Livery Style</h1>
-        <p class="paragrafo"><strong>F1 Livery Style</strong> è il primo programma che trasforma la tua idea di livrea
-            in una monoposto realistica di Formula 1. <br> Sperimenta colori, sponsor e design unici e <em>dai vita alla
-                tua vettura ideale con pochi click.</em> <br><br>Creato da Amel Cehic, studente della CPT Trevano di Lugano, Svizzera.</p>
+    <div class="header finisher-header">
+        <canvas id="canvasOggetto"></canvas>
+        <div class="intro">
+            <h1 style="font-family: font1;text-align: left;"><span
+                    style="color:#0040ff;font-weight: bolder;font-size: 40px;">F1</span>Livery Style</h1>
+            <p class="paragrafo">
+                <strong>F1 Livery Style</strong> 
+                è un programma che trasforma la tua idea di 
+                livrea in una monoposto realistica di Formula 1. <br> Si possono sperimentare colori, sponsor e design unici e <em>dare vita
+                alla tua vettura ideale con pochi click e con molta fantasia.</em> <br><br>Creato da Amel Cehic I3BD, studente del terzo anno della CPT Trevano di
+                Lugano, Svizzera.</p>
 
-        <div class="select">
-            <label class="radioButton">
-                <input type="radio" name="modello" value="1991" id="1991" />
-                <span class="label-text">Modello F1 1991 (MP46 Model)</span>
-            </label>
-            <label class="radioButton">
-                <input type="radio" name="modello" value="2026" id="2026" />
-                <span class="label-text">Modello F1 2026 (FIA Model)</span>
-            </label>
-            <label class="radioButton">
-                <input type="radio" name="modello" value="Mclaren" id="Mclaren" />
-                <span class="label-text">Modello F1 2021 (MCL35M Model)</span>
-            </label>
-        </div><br>
-        <button class="conferma">Conferma modello!</button>
+            <div class="select">
+                <label class="radioButton">
+                    <input type="radio" name="modello" value="1991" id="1991" />
+                    <span class="label-text">Modello F1 1991 (MP46 Model)</span>
+                </label>
+                <label class="radioButton">
+                    <input type="radio" name="modello" value="2026" id="2026" />
+                    <span class="label-text">Modello F1 2026 (FIA Model)</span>
+                </label>
+                <label class="radioButton">
+                    <input type="radio" name="modello" value="Mclaren" id="Mclaren" />
+                    <span class="label-text">Modello F1 2021 (MCL35M Model)</span>
+                </label>
+                <label class="radioButton">
+                    <input type="radio" name="modello" value="2024" id="2024" />
+                    <span class="label-text">Modello F1 2024 (MP4 27 Model)</span>
+                </label>
+            </div><br>
+            <button class="conferma">Conferma modello!</button>
+        </div>
     </div>
-
 
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="../script/finisher-header.es5.min.js" type="text/javascript"></script>
     <script src="../script/script.js"></script>
 </body>
 

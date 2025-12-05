@@ -8,6 +8,11 @@ let scena;
 let camera;
 let currentModel = null;
 
+if (!modello) {
+    alert("Non hai selezionato nessun modello, cosa vuoi personalizzare?? Ritorna alla pagina principale...");
+    window.location.href = "index.html"; 
+}
+
 function creaScena() {
   scena = new BABYLON.Scene(engine);
   scena.clearColor = new BABYLON.Color4(0, 0, 0, 0);
@@ -78,6 +83,16 @@ function impostaCamera(nomeFile) {
       console.log("camera modello mcLaren");
       break;
 
+    case "2024":
+      camera.alpha = -Math.PI / 4;
+      camera.beta = Math.PI / 2.5;
+      camera.radius = 10;
+      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
+      camera.lowerRadiusLimit = 0;
+      camera.upperRadiusLimit = 10;
+      console.log("camera modello mercedes W11");
+      break;
+
     default:
       camera.alpha = -Math.PI / 4;
       camera.beta = Math.PI / 2.5;
@@ -144,12 +159,15 @@ async function downloadModello() {
   try {
     const glb = await BABYLON.GLTF2Export.GLBAsync(scena, nomeFile);
     const glbBlob = glb.glTFFiles[nomeFile + ".glb"];
-
-    const posterBlob = await creaPoster();
+    const poster1 = await creaPoster("frontale", 0);
+    const poster2 = await creaPoster("laterale", Math.PI / 2);
+    const poster3 = await creaPoster("tre-quarti", Math.PI / 4);
 
     const zip = new JSZip();
     zip.file(nomeFile + ".glb", glbBlob);
-    zip.file(nomeFile + "_poster.png", posterBlob);
+    zip.file(nomeFile + "_poster_frontale.png", poster1);
+    zip.file(nomeFile + "_poster_laterale.png", poster2);
+    zip.file(nomeFile + "_poster_tre-quarti.png", poster3);
 
     const zipBlob = await zip.generateAsync({ type: "blob" });
     const link = document.createElement("a");
@@ -164,14 +182,26 @@ async function downloadModello() {
   }
 }
 
-function creaPoster() {
+function creaPoster(tipo, rotazioneY) {
   return new Promise((resolve) => {
+    const posizioneOriginale = camera.position.clone();
+    const targetOriginale = camera.target ? camera.target.clone() : null;
+    const alphaOriginale = camera.alpha;
+    
+    if (camera.alpha !== undefined) {
+      camera.alpha = alphaOriginale + rotazioneY;
+    }
+    
     setTimeout(() => {
       BABYLON.Tools.CreateScreenshotUsingRenderTarget(
         engine,
         camera,
         { width: 3840, height: 2160 },
         (dataUrl) => {
+          camera.position = posizioneOriginale;
+          if (targetOriginale) camera.target = targetOriginale;
+          if (camera.alpha !== undefined) camera.alpha = alphaOriginale;
+          
           fetch(dataUrl).then(res => res.blob()).then(resolve);
         }
       );

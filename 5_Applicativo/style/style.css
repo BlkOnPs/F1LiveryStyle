@@ -7,20 +7,31 @@
 
 body {
     font-family: "font1", sans-serif;
-    display: flex;
+    /*display: flex;
     align-items: center;
-    height: 100vh;
+    height: 100vh;*/
     margin: 0;
+    padding: 0;
 }
 
-#canvasOggetto {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100vh;
-    z-index: -1;
+.header.finisher-header {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
 }
+
+
+#canvasOggetto {
+    position: absolute;
+    top: 0;
+    right:10%;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
 
 .intro {
     background: linear-gradient(145deg, #f8f9fa, #dee2e6);
@@ -32,6 +43,7 @@ body {
     text-align: left;
     transition: all 0.3s ease;
     margin: 50px;
+    z-index: 0;
 }
 
 .intro:hover {
@@ -124,22 +136,6 @@ body {
 
 .radioButton input[type="radio"]:hover {
     background: #6dc6e9;
-}
-
-body.serale {
-    background: linear-gradient(145deg, #3a506b, #1c2541);
-    color: #f1f1f1;
-}
-
-body.serale .intro p {
-    color: #000000;
-}
-
-body.serale .radioButton input[type="radio"] {
-    box-shadow:
-        0 0 0 0.15em #aaa,
-        0 0 0 0.3em #222,
-        0 0 0 0.45em #000;
 }
 
 .conferma {
