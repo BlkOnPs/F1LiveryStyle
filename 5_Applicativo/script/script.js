@@ -11,16 +11,15 @@ function creaScena() {
 
   camera = new BABYLON.ArcRotateCamera(
     "camera",
-    -Math.PI / 4,
-    Math.PI / 2.5,
-    5000,
+    -Math.PI / 4, //alpha
+    Math.PI / 3, //beta
+    5000, //radius
     new BABYLON.Vector3(0, 0, 0), //target
     scena
   );
   camera.attachControl(canvasOggetto, false);
   camera.lowerRadiusLimit = 50;
   camera.upperRadiusLimit = 4000;
-
   //ROTAZIONE AUTOMATICA LENTA (+= 0.009)
   scena.registerBeforeRender(function () {
     camera.alpha += 0.009;
@@ -48,50 +47,35 @@ function creaScena() {
 function impostaCamera(nomeFile) {
   switch (nomeFile) {
     case "1991":
-      camera.alpha = -Math.PI / 4;
-      camera.beta = Math.PI / 2.5;
       camera.radius = 15;
-      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 10;
       camera.upperRadiusLimit = 15;
       console.log("camera modello 1991");
       break;
 
     case "2026":
-      camera.alpha = -Math.PI / 4;
-      camera.beta = Math.PI / 2.5;
       camera.radius = 20;
-      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 0;
       camera.upperRadiusLimit = 20;
       console.log("camera modello 2026");
       break;
 
     case "Mclaren":
-      camera.alpha = -Math.PI / 4;
-      camera.beta = Math.PI / 2.5;
       camera.radius = 9;
-      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 0;
       camera.upperRadiusLimit = 9;
       console.log("camera modello mcLaren");
       break;
       
     case "2024":
-      camera.alpha = -Math.PI / 4;
-      camera.beta = Math.PI / 2.5;
       camera.radius = 10;
-      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 0;
       camera.upperRadiusLimit = 10;
       console.log("camera modello mercedes W11");
       break;
 
     default:
-      camera.alpha = -Math.PI / 4;
-      camera.beta = Math.PI / 2.5;
       camera.radius = 1000;
-      camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 50;
       camera.upperRadiusLimit = 1000;
       console.log("camera default");
@@ -121,10 +105,9 @@ function caricaModello3D(nomeFile) {
         mesh.position.subtractInPlace(centro); //sposta la posizione al centro
       });
 
-      const grandezzaModello = dimensione.max.subtract(dimensione.min); //calcola dimensioni reali del modello | max - min
+      const grandezzaModello = dimensione.max.subtract(dimensione.min); //calcola dimensioni reali del modello | facendo (max - min)
       const dimensioneMax = Math.max(grandezzaModello.x, grandezzaModello.y, grandezzaModello.z);
-      /*Trova la dimensione piú grande del modello, 
-      per capire quanto lontano deve stare la camera*/
+      //Trova la dimensione piú grande del modello, per capire quanto lontano deve stare la camera
       camera.radius = dimensioneMax * 2;
       //il * 2, viene eseguito, perche piu è grande, piu sta lontano
 
@@ -155,7 +138,8 @@ confermaButton.addEventListener("click", function () {
   const selezionato = document.querySelector('input[name="modello"]:checked');
 
   if (selezionato) {
-    //Salva il riferimento del modelli selezionato nel browser, a cui servirà per la pagina di personalizzazione
+    /*Salva il riferimento del modelli selezionato nel browser, 
+    a cui servirà per la pagina di personalizzazione*/
     localStorage.setItem("modelloSelezionato", selezionato.value);
     //Apre la pagina di personalizzazione
     window.location.href = "styleModel.html";
@@ -175,37 +159,11 @@ window.addEventListener("resize", () => {
 });
 
 new FinisherHeader({
-  "count": 10,
-  "size": {
-    "min": 974,
-    "max": 1261,
-    "pulse": 0
-  },
-  "speed": {
-    "x": {
-      "min": 0.1,
-      "max": 0.8
-    },
-    "y": {
-      "min": 0.1,
-      "max": 0.8
-    }
-  },
-  "colors": {
-    "background": "#001dff",
-    "particles": [
-      "#00ffdd",
-      "#284292",
-      "#23dbb6"
-    ]
-  },
+  "count": 10,"size": {"min": 974, "max": 1261,"pulse": 0},
+  "speed": {"x": {"min": 0.1,"max": 0.8},"y": {"min": 0.1,"max": 0.8}},
+  "colors": {"background": "#001dff","particles": ["#00ffdd","#284292","#23dbb6"]},
   "blending": "overlay",
-  "opacity": {
-    "center": 0.5,
-    "edge": 0.05
-  },
+  "opacity": {"center": 0.5,"edge": 0.05},
   "skew": 0,
-  "shapes": [
-    "c"
-  ]
+  "shapes": ["c"]
 });

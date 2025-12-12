@@ -7,9 +7,6 @@
 
 body {
     font-family: "font1", sans-serif;
-    /*display: flex;
-    align-items: center;
-    height: 100vh;*/
     margin: 0;
     padding: 0;
 }
@@ -44,6 +41,7 @@ body {
     transition: all 0.3s ease;
     margin: 50px;
     z-index: 0;
+    
 }
 
 .intro:hover {

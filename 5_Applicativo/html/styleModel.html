@@ -70,21 +70,21 @@
                     <h3>Modifica zona a scelta</h3>
                     <div class="campo">
                         <label>Zona della vettura</label>
-                        <select name="selectZonaVettura">
-                            <option value="all">Tutte le zone</option>
-                            <option value="1">Ala anteriore</option>
-                            <option value="2">Ala posteriore</option>
-                            <option value="3">Endplate anteriore</option>
-                            <option value="4">Endplate posteriore</option>
-                            <option value="5">Engine Cover</option>
-                            <option value="6">Halo</option>
-                            <option value="7">Nosecone</option>
-                            <option value="8">Gomma Tread</option>
+                        <select id="selectZonaVettura">
+                            <option value="All">Tutte le zone</option>
+                            <option value="AlaAnteriore">Ala anteriore</option>
+                            <option value="AlaPosteriore">Ala posteriore</option>
+                            <option value="EndplateAnterioreDestro">Endplate anteriore destro</option>
+                            <option value="EndplateAnterioreSinistro">Endplate anteriore sinistro</option>
+                            <option value="EngineCover">Engine Cover</option>
+                            <option value="Halo">Halo</option>
+                            <option value="Nosecone">Nosecone</option>
+                            <option value="AlaMobile">Ala Mobile</option>
                         </select>
                     </div>
                     <div class="campo">
                         <label>Opzioni Modifica</label>
-                        <input type="color"><br><br>
+                        <input type="color" name="coloraZona"><br><br>
                         <input type="file">
                     </div>
                 </div>
@@ -171,6 +171,13 @@
                     <div class="campo" id="buttonAnimazioni">
                         <button onclick="eseguiRotazioneVettura()">Auto-rotazione/Ferma</button>
                         <input type="range" min="0.001" max="0.1" step="0.001" value="0.009" onchange="velocitaRotazione()">
+                    </div>
+                    <div class="campo" id="buttonAnimazioni">
+                        <button onclick="mostraWireframe()">Mostra WireFrame/Ripristina modello</button>
+                    </div>
+                    <div class="campo" id="buttonAnimazioni">
+                        <button onclick="eseguiRotazioneRoute()">Guida/Ferma</button>
+                        <input type="range" min="0.01" max="0.2" step="0.001" value="0.05" onchange="velocitaRotazioneRuote(event)">
                     </div>
                 </div>
             </div>

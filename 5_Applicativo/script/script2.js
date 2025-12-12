@@ -10,7 +10,7 @@ let currentModel = null;
 
 if (!modello) {
     alert("Non hai selezionato nessun modello, cosa vuoi personalizzare?? Ritorna alla pagina principale...");
-    window.location.href = "index.html"; 
+    window.location.href = "selectModel.html"; 
 }
 
 function creaScena() {
@@ -20,7 +20,7 @@ function creaScena() {
   camera = new BABYLON.ArcRotateCamera(
     "camera",
     0,
-    Math.PI / 2.5,
+    Math.PI / 2,
     7000,
     new BABYLON.Vector3(0, 0, 0),
     scena
@@ -84,8 +84,8 @@ function impostaCamera(nomeFile) {
       break;
 
     case "2024":
-      camera.alpha = -Math.PI / 4;
-      camera.beta = Math.PI / 2.5;
+      camera.alpha = -Math.PI + 300;
+      camera.beta = Math.PI / 2;
       camera.radius = 10;
       camera.setTarget(new BABYLON.Vector3(0, 0, 0));
       camera.lowerRadiusLimit = 0;
@@ -142,7 +142,7 @@ function caricaModello3D(nomeFile) {
 caricaModello3D(modello);
 
 function tornaIndietro() {
-  window.location.href = "index.html";
+  window.location.href = "selectModel.html";
 }
 
 async function downloadModello() {
