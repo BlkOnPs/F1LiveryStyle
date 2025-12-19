@@ -2,16 +2,16 @@
 <html>
 
 <head>
-    <!-- data creazione: 31.10.2025 data ultima modifica: gg.mm.aaaa -->
+    <!-- data creazione: 31.10.2025 data ultima modifica: 19.12.2025 -->
     <!-- O.S. = Windows -->
-    <!-- index.html -->
+    <!-- styleModel.html -->
     <title>Personalizza la tua vettura!</title>
     <meta charset="UTF-8">
     <meta name="description" content="Personalizzazione della vettura F1">
     <meta name="author" content="Amel Cehic">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="" type="image/x-icon">
-    <link rel="icon" href="../images/f1.png">
+    <link rel="icon" href="../images/icon/f1.png">
     <link rel="stylesheet" href="../style/style2.css">
 </head>
 
@@ -29,13 +29,12 @@
                     <h3>Chi guiderà la vettura?</h3>
                     <div class="campo">
                         <label>Numero Pilota:</label>
-                        <input type="number" min="1" max="99" value="44" id="numeroPilota">
+                        <input type="number" min="1" max="99" value="00" name="numeroPilota">
                     </div>
                     <div class="campo">
                         <label>Nome Pilota:</label>
-                        <input type="text" placeholder="Inserisci il tuo nome" id="nomePilota">
+                        <input type="text" placeholder="Inserisci il tuo nome" name="nomePilota">
                     </div>
-                    <button class="neomorfismoButton" onclick="impostaNumero()">Imposta</button>
                 </div>
 
                 <!---Selezione Gomma da impostare-->
@@ -45,24 +44,15 @@
                         <label>Tipo di gomma:</label><br>
                         <div class="immaginiGomme">
                             <button class="logoGomma" onclick="cambiaTipoGomma('soft')">
-                                <img src="../images/Type_of_Tires/soft.png" alt="soft">
+                                <img src="../images/tires/soft.png" alt="soft">
                             </button>
                             <button class="logoGomma" onclick="cambiaTipoGomma('medium')">
-                                <img src="../images/Type_of_Tires/medium.png" alt="medium">
+                                <img src="../images/tires/medium.png" alt="medium">
                             </button>
                             <button class="logoGomma" onclick="cambiaTipoGomma('hard')">
-                                <img src="../images/Type_of_Tires/hard.png" alt="hard">
+                                <img src="../images/tires/hard.png" alt="hard">
                             </button>
                         </div>
-                    </div>
-                </div>
-
-                <!---Colore Base Vettura-->
-                <div class="sezione">
-                    <h3>Colore della Vettura</h3>
-                    <div class="campo">
-                        <label>Colore di base:</label>
-                        <input type="color" name="colorPickerVettura">
                     </div>
                 </div>
 
@@ -74,18 +64,13 @@
                             <option value="All">Tutte le zone</option>
                             <option value="AlaAnteriore">Ala anteriore</option>
                             <option value="AlaPosteriore">Ala posteriore</option>
-                            <option value="EndplateAnterioreDestro">Endplate anteriore destro</option>
-                            <option value="EndplateAnterioreSinistro">Endplate anteriore sinistro</option>
                             <option value="EngineCover">Engine Cover</option>
                             <option value="Halo">Halo</option>
-                            <option value="Nosecone">Nosecone</option>
-                            <option value="AlaMobile">Ala Mobile</option>
                         </select>
                     </div>
                     <div class="campo">
                         <label>Opzioni Modifica</label>
-                        <input type="color" name="coloraZona"><br><br>
-                        <input type="file">
+                        <input type="color" name="coloraZona">
                     </div>
                 </div>
             </div>
@@ -101,11 +86,51 @@
 
             <div class="destraDiv">
                 <h1>Materiali, Animazioni e Background</h1>
-                
+
                 <div class="sezione">
-                    <h3>Inserimento immagine</h3>
+                    <h3>Modifica materiale intera Vettura</h3>
                     <div class="campo">
-                        <input type="file" class="filePick">
+                        <div class="grigliaSfondi">
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/rocks.jpg', this)">
+                                <img src="../images/textures/materials/rocks.jpg" alt="immagine 1">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/wood.jpg', this)">
+                                <img src="../images/textures/materials/wood.jpg" alt="immagine 2">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/brick.jpg', this)">
+                                <img src="../images/textures/materials/brick.jpg" alt="immagine 3">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/aerial.jpg', this)">
+                                <img src="../images/textures/materials/aerial.jpg" alt="immagine 4">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/rebar_reinforced.jpg', this)">
+                                <img src="../images/textures/materials/rebar_reinforced.jpg" alt="immagine 5">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/gingham.jpg', this)">
+                                <img src="../images/textures/materials/gingham.jpg" alt="immagine 6">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/metal_plate.jpg', this)">
+                                <img src="../images/textures/materials/metal_plate.jpg" alt="immagine 7">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/snow.jpg', this)">
+                                <img src="../images/textures/materials/snow.jpg" alt="immagine 8">
+                            </button>
+                            <button class="buttonSfondo"
+                                onclick="cambiaMaterialeModello('../images/textures/materials/mud.jpg', this)">
+                                <img src="../images/textures/materials/mud.jpg" alt="immagine 9">
+                            </button>
+                        </div><br>
+                        <div id="buttonAnimazioni" style="text-align: center;">
+                            <button onclick="ripristinaMateriale()">Ripristina Materiale</button>
+                        </div>
                     </div>
                 </div>
 
@@ -125,40 +150,31 @@
                     <div class="campo">
                         <label>Immagini Background</label>
                         <div class="grigliaSfondi">
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/1.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/1.jpg')">
                                 <img src="../images/backgrounds/1.jpg" alt="immagine 1">
                             </button>
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/2.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/2.jpg')">
                                 <img src="../images/backgrounds/2.jpg" alt="immagine 2">
                             </button>
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/3.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/3.jpg')">
                                 <img src="../images/backgrounds/3.jpg" alt="immagine 3">
                             </button>
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/4.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/4.jpg')">
                                 <img src="../images/backgrounds/4.jpg" alt="immagine 4">
                             </button>
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/5.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/5.jpg')">
                                 <img src="../images/backgrounds/5.jpg" alt="immagine 5">
                             </button>
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/6.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/6.jpg')">
                                 <img src="../images/backgrounds/6.jpg" alt="immagine 6">
                             </button>
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/7.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/7.jpg')">
                                 <img src="../images/backgrounds/7.jpg" alt="immagine 7">
                             </button>
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/8.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/8.jpg')">
                                 <img src="../images/backgrounds/8.jpg" alt="immagine 8">
                             </button>
-                            <button class="buttonSfondo"
-                                onclick="cambiaSfondoImmagine('../images/backgrounds/9.jpg')">
+                            <button class="buttonSfondo" onclick="cambiaSfondoImmagine('../images/backgrounds/9.jpg')">
                                 <img src="../images/backgrounds/9.jpg" alt="immagine 9">
                             </button>
                         </div>
@@ -169,15 +185,18 @@
                 <div class="sezione">
                     <h3>Animazioni e Movimenti</h3>
                     <div class="campo" id="buttonAnimazioni">
-                        <button onclick="eseguiRotazioneVettura()">Auto-rotazione/Ferma</button>
-                        <input type="range" min="0.001" max="0.1" step="0.001" value="0.009" onchange="velocitaRotazione()">
+                        <label>Auto-Rotazione Vettura </label>
+                        <button onclick="eseguiRotazioneVettura()">Attiva/Disattiva Rotazione</button>
+                        <input type="range" min="0.001" max="0.1" step="0.001" value="0.009"
+                            onchange="velocitaRotazione()" oninput="velocitaRotazione()">
                     </div>
                     <div class="campo" id="buttonAnimazioni">
-                        <button onclick="mostraWireframe()">Mostra WireFrame/Ripristina modello</button>
+                        <label>Mostra Wireframe Modello</label>
+                        <button onclick="mostraWireframe()">Visualizza/Ripristina</button>
                     </div>
                     <div class="campo" id="buttonAnimazioni">
-                        <button onclick="eseguiRotazioneRoute()">Guida/Ferma</button>
-                        <input type="range" min="0.01" max="0.2" step="0.001" value="0.05" onchange="velocitaRotazioneRuote(event)">
+                        <label>Attivazione luce posteriore</label>
+                        <button onclick="attivaLucePosteriore()">Attiva/Disattiva</button>
                     </div>
                 </div>
             </div>
